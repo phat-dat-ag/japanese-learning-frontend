@@ -4,6 +4,15 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent: () =>
-            import('./features/home/home').then((m) => m.Home),
+            import('./core/layout/main-layout/main-layout')
+                .then((m) => m.MainLayout),
+        children: [
+            {
+                path: '',
+                loadComponent: () =>
+                    import('./features/home/home')
+                        .then((m) => m.Home),
+            },
+        ],
     },
 ];
