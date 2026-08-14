@@ -1,0 +1,33 @@
+<div class="mx-auto max-w-5xl px-6 py-8">
+    <a routerLink="/flashcards" class="text-sm font-medium text-gray-500 hover:text-indigo-600">
+        ← Back to levels
+    </a>
+
+    @if (level) {
+    <div class="mt-6">
+        <p class="text-sm font-medium text-indigo-600">
+            Flashcard / {{ level.code }}
+        </p>
+
+        <h1 class="mt-2 text-3xl font-bold text-gray-900">
+            {{ level.name }}
+        </h1>
+
+        <p class="mt-2 text-gray-500">
+            {{ level.lessonCount }} lessons available.
+        </p>
+    </div>
+    }
+
+    <div class="mt-8 space-y-4">
+        @for (lesson of lessons; track lesson.id) {
+        <app-lesson-card [lesson]="lesson" [levelId]="levelId" />
+        } @empty {
+        <div class="rounded-xl border border-dashed border-gray-300 p-12 text-center">
+            <p class="text-gray-500">
+                No lessons available.
+            </p>
+        </div>
+        }
+    </div>
+</div>
