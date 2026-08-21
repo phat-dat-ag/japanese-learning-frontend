@@ -13,6 +13,16 @@ export const routes: Routes = [
                     import('./features/home/home')
                         .then((m) => m.Home),
             },
+            {
+                path: 'flashcards',
+                loadChildren: () =>
+                    import('./features/flashcard/flashcard.routes')
+                        .then(m => m.FLASHCARD_ROUTES)
+            },
         ],
     },
+    {
+        path: '**',
+        redirectTo: ''
+    }
 ];
