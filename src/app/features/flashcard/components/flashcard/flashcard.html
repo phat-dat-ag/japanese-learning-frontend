@@ -1,0 +1,47 @@
+<button type="button"
+    class="w-full max-w-2xl rounded-2xl border border-gray-200 bg-white p-8 text-left shadow-sm transition hover:shadow-md"
+    (click)="reveal()">
+    <div class="min-h-[360px]">
+        <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-gray-400">
+                Vocabulary
+            </span>
+
+            @if (!revealed()) {
+            <span class="text-xs text-gray-400">
+                Click to reveal
+            </span>
+            }
+        </div>
+
+        <div class="flex min-h-[300px] flex-col items-center justify-center text-center">
+            <p class="text-5xl font-bold text-gray-900">
+                {{ card().word }}
+            </p>
+
+            <p class="mt-4 text-xl text-gray-500">
+                {{ card().reading }}
+            </p>
+
+            @if (revealed()) {
+            <div class="mt-10">
+                <p class="text-2xl font-semibold text-indigo-600">
+                    {{ card().meaning }}
+                </p>
+
+                @if (card().exampleSentence) {
+                <p class="mt-6 text-lg text-gray-700">
+                    {{ card().exampleSentence }}
+                </p>
+                }
+
+                @if (card().exampleTranslation) {
+                <p class="mt-2 text-sm text-gray-500">
+                    {{ card().exampleTranslation }}
+                </p>
+                }
+            </div>
+            }
+        </div>
+    </div>
+</button>
